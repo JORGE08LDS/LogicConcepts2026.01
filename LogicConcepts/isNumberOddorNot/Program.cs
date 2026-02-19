@@ -1,12 +1,11 @@
 ﻿var numberString = string.Empty;
 do
 {
-    Console.Write("Ingrese número o 'S' para salir:  ");
+    Console.WriteLine("Ingrese número o 's' para salir:  ");
     numberString = Console.ReadLine();
-    if (numberString!.ToLower() == "S")
+    if (numberString!.ToLower() == "s")
     {
-        Console.WriteLine("Saliendo del programa...");
-        break;
+        continue;        
     }
     var numberInt = 0;
     if (int.TryParse(numberString, out numberInt))
@@ -25,7 +24,7 @@ do
         Console.WriteLine($"El valor {numberString} no es un número válido");
     }
 
-} while (numberString!.ToLower() != "S");
-
+} while (numberString != "s");
+Console.WriteLine("Saliendo del programa...");
 
 

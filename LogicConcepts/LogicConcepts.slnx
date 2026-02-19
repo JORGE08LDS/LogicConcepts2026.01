@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/01/">
+    <Project Path="ConsoleApp1/ConsoleApp1.csproj" Id="140c86ae-08a9-439d-8d7a-f33f82d5f8f7" />
     <Project Path="isNumberOddorNot/isNumberOddorNot.csproj" />
   </Folder>
 </Solution>
