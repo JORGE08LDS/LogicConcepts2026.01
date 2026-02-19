@@ -3,4 +3,10 @@
     <Project Path="ConsoleApp1/ConsoleApp1.csproj" Id="140c86ae-08a9-439d-8d7a-f33f82d5f8f7" />
     <Project Path="isNumberOddorNot/isNumberOddorNot.csproj" />
   </Folder>
+  <Folder Name="/02/">
+    <Project Path="Larger Number/Larger Number.csproj" Id="fee586ed-65d9-4291-a402-deda568242f2" />
+  </Folder>
+  <Folder Name="/Share/">
+    <Project Path="Share/Share.csproj" Id="5a3fd6fb-6d14-4ccb-817a-632352861b7e" />
+  </Folder>
 </Solution>
