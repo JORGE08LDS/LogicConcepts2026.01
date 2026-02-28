@@ -9,4 +9,7 @@
   <Folder Name="/Share/">
     <Project Path="Share/Share.csproj" Id="5a3fd6fb-6d14-4ccb-817a-632352861b7e" />
   </Folder>
+  <Folder Name="/TALLER #1/">
+    <Project Path="TallerPoo/TallerPoo.csproj" Id="d8197c12-0e4e-4b22-b875-6f8d56f3f9d3" />
+  </Folder>
 </Solution>
