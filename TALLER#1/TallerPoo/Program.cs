@@ -36,5 +36,7 @@ class Program
         {
             Console.WriteLine(ex.Message);
         }
+        Console.WriteLine("\nPress any key to exit...");
+        Console.ReadKey();
     }
 }
