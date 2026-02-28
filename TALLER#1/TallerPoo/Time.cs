@@ -7,19 +7,56 @@ public class Time
     private int second;
     private int millisecond;
 
-    // Constructor 1: no parameters
+    public int Hour
+    {
+        get { return hour; }
+        set
+        {
+            hour = value;
+            ValidateTime();
+        }
+    }
+
+    public int Minute
+    {
+        get { return minute; }
+        set
+        {
+            minute = value;
+            ValidateTime();
+        }
+    }
+
+    public int Second
+    {
+        get { return second; }
+        set
+        {
+            second = value;
+            ValidateTime();
+        }
+    }
+
+    public int Millisecond
+    {
+        get { return millisecond; }
+        set
+        {
+            millisecond = value;
+            ValidateTime();
+        }
+    }
+
+    // ===== CONSTRUCTORS =====
+
     public Time() : this(0, 0, 0, 0) { }
 
-    // Constructor 2: hour
     public Time(int hour) : this(hour, 0, 0, 0) { }
 
-    // Constructor 3: hour and minute
     public Time(int hour, int minute) : this(hour, minute, 0, 0) { }
 
-    // Constructor 4: hour, minute and second
     public Time(int hour, int minute, int second) : this(hour, minute, second, 0) { }
 
-    // Constructor 5: full constructor
     public Time(int hour, int minute, int second, int millisecond)
     {
         this.hour = hour;
@@ -29,6 +66,8 @@ public class Time
 
         ValidateTime();
     }
+
+    // ===== VALIDATION =====
 
     private void ValidateTime()
     {
@@ -44,6 +83,8 @@ public class Time
         if (millisecond < 0 || millisecond > 999)
             throw new ArgumentException("Invalid millisecond");
     }
+
+    // ===== METHODS =====
 
     public override string ToString()
     {
@@ -73,47 +114,24 @@ public class Time
 
     public bool IsOtherDay(Time other)
     {
-        int totalHours = hour + other.hour;
-        int totalMinutes = minute + other.minute;
-        int totalSeconds = second + other.second;
-        int totalMilliseconds = millisecond + other.millisecond;
-
-        if (totalMilliseconds > 999) totalSeconds++;
-        if (totalSeconds > 59) totalMinutes++;
-        if (totalMinutes > 59) totalHours++;
-
-        return totalHours > 23;
+        int totalMs = this.ToMilliseconds() + other.ToMilliseconds();
+        return totalMs >= 86400000; // 24 hours in milliseconds
     }
 
     public Time Add(Time other)
     {
-        int ms = millisecond + other.millisecond;
-        int sec = second + other.second;
-        int min = minute + other.minute;
-        int hr = hour + other.hour;
+        int totalMs = this.ToMilliseconds() + other.ToMilliseconds();
 
-        if (ms > 999)
-        {
-            sec++;
-            ms -= 1000;
-        }
+        totalMs %= 86400000; // Reset if next day
 
-        if (sec > 59)
-        {
-            min++;
-            sec -= 60;
-        }
+        int hr = totalMs / 3600000;
+        totalMs %= 3600000;
 
-        if (min > 59)
-        {
-            hr++;
-            min -= 60;
-        }
+        int min = totalMs / 60000;
+        totalMs %= 60000;
 
-        if (hr > 23)
-        {
-            hr -= 24;
-        }
+        int sec = totalMs / 1000;
+        int ms = totalMs % 1000;
 
         return new Time(hr, min, sec, ms);
     }
