@@ -6,13 +6,13 @@ class CosechandoCaballo
     static void Main()
     {
         Console.Write("Ingrese ubicación de los frutos: ");
-        string entrada = Console.ReadLine();
+        string entrada = Console.ReadLine()!;
 
         Console.Write("Ingrese posición inicial del caballo: ");
-        string inicio = Console.ReadLine();
+        string inicio = Console.ReadLine()!;
 
         Console.Write("Ingrese los movimientos del caballo: ");
-        string movs = Console.ReadLine();
+        string movs = Console.ReadLine()!;
 
         Dictionary<string, char> frutos = new Dictionary<string, char>();
 
